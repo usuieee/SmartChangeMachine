@@ -73,7 +73,7 @@ def main():
         print(label['name'])
     """
     print('Retrieving Messages')
-    results = service.users().messages().list(userId='me',labelIds='Label_1').execute()
+    results = service.users().messages().list(userId='me',labelIds='Label_1').execute()#Label_1 is is the LabelID for "Trigger" label in gmail
     messages = results.get('messages', [])
 
     if not messages:
@@ -83,7 +83,7 @@ def main():
       for message in messages:
         print(message['id'])
     
-	
+	'''vvv this code works but doesn't print right. needs a little debugging.
     print('Parsing Email...')
     for message in messages:
 	results = service.users().messages().get(userId='me',id=message['id']).execute()
@@ -94,6 +94,7 @@ def main():
             print('Message Data Found!:')
             for name in names:
               	print(name['name'])
+    '''
     print('De-Label Here')
 if __name__ == '__main__':
     main()
