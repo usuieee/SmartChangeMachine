@@ -17,7 +17,7 @@ except ImportError:
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/gmail-python-quickstart.json
-SCOPES = 'https://www.googleapis.com/auth/gmail.readonly'
+SCOPES = 'https://www.googleapis.com/auth/gmail.modify'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Gmail API Python Quickstart'
 
@@ -82,6 +82,7 @@ def main():
       print('Trigger Messages Found!:')
       for message in messages:
         print(message['id'])
+        service.users().messages().modify(userId='me', id=message['id'], body={'removeLabelIds':['Label_1']}).execute()
     
 	'''vvv this code works but doesn't print right. needs a little debugging.
     print('Parsing Email...')
