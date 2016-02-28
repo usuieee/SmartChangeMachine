@@ -82,7 +82,7 @@ def main():
       print('Trigger Messages Found!:')
       for message in messages:
         print(message['id'])
-        service.users().messages().modify(userId='me', id=message['id'], body={'removeLabelIds':['Label_1']}).execute()
+        service.users().messages().modify(userId='me', id=message['id'], body={'removeLabelIds':['Label_1'],'addLabelIds':['Label_2']}).execute()
     
 	'''vvv this code works but doesn't print right. needs a little debugging.
     print('Parsing Email...')
